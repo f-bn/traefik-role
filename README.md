@@ -1,4 +1,4 @@
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Traefik.logo.png/1200px-Traefik.logo.png" alt="traefik-logo" title="traefi" align="top" height=205 /></p>
+<p><img src="https://doc.traefik.io/traefik/assets/img/traefikproxy-vertical-logo-color.svg" alt="traefik-logo" title="traefik" align="top" height=205 /></p>
 
 *Traefik is an open-source Edge Router that makes publishing your services a fun and easy experience. It receives requests on behalf of your system and finds out which components are responsible for handling them.*
 
