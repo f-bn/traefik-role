@@ -42,7 +42,7 @@ More informations on providers [documentation](https://doc.traefik.io/traefik/pr
 
 Ingress route is a concept tied to this Ansible role and inspired by the IngressRoute CRD available when deploying Traefik on Kubernetes. The goal is to centralize Routers and Services configuration in a single dedicated file for a specific "route" to a given backend.
 
-**NOTE**: this configuration is only available for the `file` provider.
+**NOTE**: this configuration is only available when using the `file` provider.
 
 ```YAML
 traefik_ingress_routes:
