@@ -1,2 +1,10 @@
 # Managed by Ansible
 
+{% if middleware.description is defined -%}
+# {{ middleware.description }}
+{% endif %}
+{{ middleware.mode }}:
+  middlewares:
+    {{ middleware.name }}:
+      {{ middleware.type }}:
+        {{ middleware.options | to_nice_yaml(indent=2,sort_keys=False) | indent(8,false) }}

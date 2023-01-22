@@ -28,10 +28,10 @@ More informations on entrypoints [documentation](https://doc.traefik.io/traefik/
 ```YAML
 traefik_providers:
   file:
-    directory: /etc/traefik/routes
+    directory: /etc/traefik/dynamic
     watch: true
   docker:
-    endpoint: 'unix:///var/run/docker.sock'
+    endpoint: "unix:///var/run/docker.sock"
     useBindPortIP: true
     exposedByDefault: false
 ```
@@ -47,8 +47,8 @@ Ingress route is a concept tied to this Ansible role and inspired by the Ingress
 ```YAML
 traefik_ingress_routes:
   - name: myapp-route
-    mode: http
     description: Route to myapp backend
+    mode: http
     routers:
       myapp-router:
         rule: "Host(`myapp.example.com`)"
@@ -71,8 +71,8 @@ traefik_ingress_routes:
 ```YAML
 traefik_middlewares:
   - name: basicauth-myapp
-    mode: http
     description: Add basic auth for myapp access
+    mode: http
     type: basicAuth
     options:
       users:

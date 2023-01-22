@@ -8,10 +8,11 @@ Role variables
 | `traefik_version`                 | `2.9.6`                      | Defines the version of Traefik to install                        |
 | `traefik_install_dir`             | `/usr/local/bin`             | Defines the Traefik binary installation directory                |
 | `traefik_config_dir`              | `/etc/traefik`               | Defines the Traefik configuration directory                      |
-| `traefik_config_filepath`         | `{{ traefik_config_dir }}/config.yaml`| Defines the absolute path to the static Traefik configuration file |
-| `traefik_archive_url`             | see [defaults](../defaults/main.yml) | Defines the URL where to download the Traefik binary archive |
-| `traefik_archive_checksum`        | see [defaults](../defaults/main.yml) | Defines the the Traefik binary checksum (sha256)         |
-| `traefik_archive_update`          | `false`                      | If set to `true`, force the Traefik binary update                |
+| `traefik_config_static_path`      | `{{ traefik_config_dir }}/traefik.yaml`| Defines the absolute path to the static Traefik configuration file |
+| `traefik_config_dynamic_dir`      | `{{ traefik_config_dir }}/dynamic`| Defines the directory where Traefik dyanmic configuration files are stored |
+| `traefik_binary_archive_url`      | see [defaults](../defaults/main.yml) | Defines the URL where to download the Traefik binary archive |
+| `traefik_binary_archive_checksum` | see [defaults](../defaults/main.yml) | Defines the Traefik binary checksum (sha256)             |
+| `traefik_binary_update`           | `false`                      | If set to `true`, force the Traefik binary update                |
 
 #### Global
 
@@ -37,14 +38,12 @@ Role variables
 
 | Name                              | Default                      | Description                                                      |
 | :-------------------------------- | :--------------------------- | :--------------------------------------------------------------- |
-| `traefik_ingress_routes_dir`      | `{{ traefik_config_dir }}/routes`| Defines the ingress routes configuration directory           |
 | `traefik_ingress_routes`          | `{}`                         | Defines the ingress routes configuration (see examples)          |
 
 #### Middlewares
 
 | Name                              | Default                      | Description                                                      |
 | :-------------------------------- | :--------------------------- | :--------------------------------------------------------------- |
-| `traefik_middlewares_dir`         | `{{ traefik_config_dir }}/middlewares`| Defines the Traefik middlewares configuration directory |
 | `traefik_middlewares`             | `{}`                         | Defines the Traefik middlewares configuration (see examples)     |
 
 #### API

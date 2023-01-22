@@ -5,13 +5,13 @@
   register: _traefik_binary
 
 - name: Install Traefik
-  when: not _traefik_binary.stat.exists or traefik_archive_update
+  when: not _traefik_binary.stat.exists or traefik_binary_update
   block:
     - name: Download Traefik binary archive
       ansible.builtin.get_url:
-        url: "{{ traefik_archive_url }}"
+        url: "{{ traefik_binary_archive_url }}"
         dest: "/tmp/traefik_{{ traefik_version }}.tar.gz"
-        checksum: "sha256:{{ traefik_archive_checksum }}"
+        checksum: "sha256:{{ traefik_binary_archive_checksum }}"
         owner: root
         group: root
         mode: '0644'

@@ -7,11 +7,12 @@ traefik_version: '2.9.6'
 traefik_install_dir: /usr/local/bin
 
 traefik_config_dir: /etc/traefik
-traefik_config_filepath: "{{ traefik_config_dir }}/config.yaml"
+traefik_config_static_path: "{{ traefik_config_dir }}/traefik.yaml"
+traefik_config_dynamic_dir: "{{ traefik_config_dir }}/dynamic"
 
-traefik_archive_url: "https://github.com/traefik/traefik/releases/download/v{{ traefik_version }}/traefik_v{{ traefik_version }}_linux_amd64.tar.gz"
-traefik_archive_checksum: "9aabb29a10ac051161fe286cdaa5c336073f08f2298fb994dc4f0a5328e21f2f"
-traefik_archive_update: false
+traefik_binary_archive_url: "https://github.com/traefik/traefik/releases/download/v{{ traefik_version }}/traefik_v{{ traefik_version }}_linux_amd64.tar.gz"
+traefik_binary_archive_checksum: "9aabb29a10ac051161fe286cdaa5c336073f08f2298fb994dc4f0a5328e21f2f"
+traefik_binary_update: false
 
 # -----------------------------------------------------------------------------
 # GLOBAL
@@ -33,19 +34,17 @@ traefik_entrypoints:
 # -----------------------------------------------------------------------------
 traefik_providers:
   file:
-    directory: "{{ traefik_ingress_routes_dir }}"
+    directory: "{{ traefik_config_dynamic_dir }}"
     watch: true
 
 # -----------------------------------------------------------------------------
 # INGRESS ROUTES
 # -----------------------------------------------------------------------------
-traefik_ingress_routes_dir: "{{ traefik_config_dir }}/routes"
 traefik_ingress_routes: {}
 
 # -----------------------------------------------------------------------------
 # MIDDLEWARES
 # -----------------------------------------------------------------------------
-traefik_middlewares_dir: "{{ traefik_config_dir }}/middlewares"
 traefik_middlewares: {}
 
 # -----------------------------------------------------------------------------

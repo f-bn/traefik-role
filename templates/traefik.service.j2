@@ -9,7 +9,7 @@ After=network-online.target
 Type=notify
 User=traefik
 Group=traefik
-ExecStart={{ traefik_install_dir }}/traefik --configFile={{ traefik_config_filepath }}
+ExecStart={{ traefik_install_dir }}/traefik --configFile={{ traefik_config_static_path }}
 Restart=on-failure
 RestartSec=5
 WatchdogSec=5
