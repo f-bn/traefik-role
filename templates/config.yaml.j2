@@ -1,0 +1,60 @@
+# Managed by Ansible
+
+# - Global -
+global:
+  checkNewVersion: {{ traefik_global_checknewversion | lower }}
+  sendAnonymousUsage: {{ traefik_global_sendanonymoususage | lower }}
+
+# - Entrypoints -
+entryPoints:
+  {{ traefik_entrypoints | to_nice_yaml(indent=2,sort_keys=False) | indent(2,false) }}
+
+# - Providers -
+providers:
+  {{ traefik_providers | to_nice_yaml(indent=2,sort_keys=False) | indent(2,false) }}
+
+{% if traefik_api_enabled -%}
+# - API -
+api:
+  insecure: {{ traefik_api_insecure }}
+  dashboard: {{ traefik_api_dashboard }}
+  debug: {{ traefik_api_debug }}
+{% endif %}
+
+# - Logs -
+log:
+{% if traefik_logs_filepath|length>0 -%}
+  filePath: {{ traefik_logs_filepath }}
+{% endif %}
+  format: {{ traefik_logs_format }}
+  level: {{ traefik_logs_level }}
+
+{% if traefik_access_logs_enabled -%}
+# - Access logs -
+accessLog:
+{% if traefik_access_logs_filepath|length>0 -%}
+  filePath: {{ traefik_access_logs_filepath }}
+{% endif %}
+  format: {{ traefik_access_logs_format }}
+{% if traefik_access_logs_buffering_size|length>0 -%}
+  bufferingSize: {{ traefik_access_logs_buffering_size }}
+{% endif %}
+{% endif %}
+
+{% if traefik_metrics_enabled -%}
+# - Metrics -
+metrics:
+  {{ traefik_metrics_backends | to_nice_yaml(indent=2,sort_keys=False) | indent(2,false) }}
+{% endif %}
+
+{% if traefik_tracing_enabled -%}
+tracing:
+  {{ traefik_tracing_backends | to_nice_yaml(indent=2,sort_keys=False) | indent(2,false) }}
+{% endif %}
+
+{% if traefik_ping_enabled -%}
+ping:
+  entryPoint: {{ traefik_ping_entrypoint }}
+  manualRouting: {{ traefik_ping_manualrouting }}
+  terminatingStatusCode: {{ traefik_ping_terminating_statuscode }}
+{% endif %}

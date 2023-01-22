@@ -1,0 +1,32 @@
+---
+- name: Check if Traefik binary is already installed
+  ansible.builtin.stat:
+    path: "{{ traefik_install_dir }}/traefik"
+  register: _traefik_binary
+
+- name: Install Traefik
+  when: not _traefik_binary.stat.exists or traefik_archive_update
+  block:
+    - name: Download Traefik binary archive
+      ansible.builtin.get_url:
+        url: "{{ traefik_archive_url }}"
+        dest: "/tmp/traefik_{{ traefik_version }}.tar.gz"
+        checksum: "sha256:{{ traefik_archive_checksum }}"
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Ensure Traefik binary is installed
+      ansible.builtin.unarchive:
+        src: "/tmp/traefik_{{ traefik_version }}.tar.gz"
+        dest: "{{ traefik_install_dir }}"
+        include: ['traefik']
+        remote_src: yes
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: Ensure Trafik binary archive is purged
+      ansible.builtin.file:
+        path: "/tmp/traefik_{{ traefik_version }}.tar.gz"
+        state: absent

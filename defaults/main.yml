@@ -1,2 +1,93 @@
 ---
-# defaults file for ansible-role-template
+# -----------------------------------------------------------------------------
+# GENERAL
+# -----------------------------------------------------------------------------
+traefik_version: '2.9.6'
+
+traefik_install_dir: /usr/local/bin
+
+traefik_config_dir: /etc/traefik
+traefik_config_filepath: "{{ traefik_config_dir }}/config.yaml"
+
+traefik_archive_url: "https://github.com/traefik/traefik/releases/download/v{{ traefik_version }}/traefik_v{{ traefik_version }}_linux_amd64.tar.gz"
+traefik_archive_checksum: "9aabb29a10ac051161fe286cdaa5c336073f08f2298fb994dc4f0a5328e21f2f"
+traefik_archive_update: false
+
+# -----------------------------------------------------------------------------
+# GLOBAL
+# -----------------------------------------------------------------------------
+traefik_global_checknewversion: false
+traefik_global_sendanonymoususage: false
+
+# -----------------------------------------------------------------------------
+# ENTRYPOINTS
+# -----------------------------------------------------------------------------
+traefik_entrypoints:
+  http:
+    address: ":80"
+  https:
+    address: ":443"
+
+# -----------------------------------------------------------------------------
+# PROVIDERS
+# -----------------------------------------------------------------------------
+traefik_providers:
+  file:
+    directory: "{{ traefik_ingress_routes_dir }}"
+    watch: true
+
+# -----------------------------------------------------------------------------
+# INGRESS ROUTES
+# -----------------------------------------------------------------------------
+traefik_ingress_routes_dir: "{{ traefik_config_dir }}/routes"
+traefik_ingress_routes: {}
+
+# -----------------------------------------------------------------------------
+# MIDDLEWARES
+# -----------------------------------------------------------------------------
+traefik_middlewares_dir: "{{ traefik_config_dir }}/middlewares"
+traefik_middlewares: {}
+
+# -----------------------------------------------------------------------------
+# API
+# -----------------------------------------------------------------------------
+traefik_api_enabled: false
+traefik_api_insecure: false
+traefik_api_dashboard: false
+traefik_api_debug: false
+
+# -----------------------------------------------------------------------------
+# LOGS
+# -----------------------------------------------------------------------------
+traefik_logs_dir: /var/log/traefik
+traefik_logs_filepath: ''
+traefik_logs_format: common
+traefik_logs_level: ERROR
+
+# -----------------------------------------------------------------------------
+# ACCESS LOGS
+# -----------------------------------------------------------------------------
+traefik_access_logs_enabled: false
+traefik_access_logs_filepath: ''
+traefik_access_logs_format: common
+traefik_access_logs_buffering_size: ''
+
+# -----------------------------------------------------------------------------
+# METRICS
+# -----------------------------------------------------------------------------
+traefik_metrics_enabled: false
+traefik_metrics_backends: {}
+
+# -----------------------------------------------------------------------------
+# TRACING
+# -----------------------------------------------------------------------------
+traefik_tracing_enabled: false
+traefik_tracing_backends: {}
+
+# -----------------------------------------------------------------------------
+# PING
+# -----------------------------------------------------------------------------
+traefik_ping_enabled: false
+traefik_ping_entrypoint: traefik
+traefik_ping_manualrouting: false
+traefik_ping_terminating_statuscode: '503'

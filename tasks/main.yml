@@ -1,2 +1,12 @@
 ---
-# tasks file for ansible-role-template
+- name: Pre-installation system tasks
+  ansible.builtin.import_tasks: system.yml
+
+- name: Install Traefik
+  ansible.builtin.import_tasks: install.yml
+
+- name: Configure Traefik
+  ansible.builtin.import_tasks: configure.yml
+
+- name: Manage Traefik service
+  ansible.builtin.import_tasks: service.yml

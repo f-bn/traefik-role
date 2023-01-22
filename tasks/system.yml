@@ -1,0 +1,14 @@
+---
+- name: Ensure Traefik user group exists
+  ansible.builtin.group:
+    name: traefik
+    state: present
+
+- name: Ensure Traefik user account exists
+  ansible.builtin.user:
+    name: traefik
+    group: traefik
+    shell: /usr/sbin/nologin
+    comment: "Traefik server user"
+    system: true
+    state: present
