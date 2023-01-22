@@ -1,6 +1,10 @@
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Traefik.logo.png/1200px-Traefik.logo.png" alt="traefik-logo" title="traefi" align="top" height=230 /></p>
+
+*Traefik is an open-source Edge Router that makes publishing your services a fun and easy experience. It receives requests on behalf of your system and finds out which components are responsible for handling them.*
+
 ### General informations
 
-A brief description of the role goes here.
+This Ansible role is designed to deploy and configure the Traefik Edge Router on target servers.
 
 **Table of Contents**
 
@@ -8,36 +12,44 @@ A brief description of the role goes here.
   - [Examples](#examples)
   - [Install and use this role](#install-and-use-this-role)
 
-**Supported Platforms**
-
-  - \<platform\>
-
-**Requirements**
-
-  - \<requirement\>
-
 **References**
 
-  - \<reference : [Link]()\>
+  - Traefik : https://traefik.io/
 
 ### Role variables
 
 The role variables documentation are available here :
 
-  - [General](docs/variables.md)
+  - [General](docs/variables.md#general)
+  - [Global](docs/variables.md#global)
+  - [Entrypoints](docs/variables.md#entrypoints)
+  - [Providers](docs/variables.md#providers)
+  - [Ingress Routes](docs/variables.md#ingress-routes)
+  - [Middlewares](docs/variables.md#middlewares)
+  - [API](docs/variables.md#api)
+  - [Logs](docs/variables.md#logs)
+  - [Access Logs](docs/variables.md#access-logs)
+  - [Metrics](docs/variables.md#metrics)
+  - [Tracing](docs/variables.md#tracing)
+  - [Ping](docs/variables.md#ping)
 
 ### Examples
 
 You can find some configurations examples :
 
-  - [Example](docs/examples.md)
+  - [Manage entrypoints configuration](docs/examples.md#manage-entrypoints-configuration)
+  - [Manage providers configuration](docs/examples.md#manage-providers-configuration)
+  - [Manage ingress route configuration](docs/examples.md#manage-ingress-route-configuration)
+  - [Manage middlewares configuration](docs/examples.md#manage-middlewares-configuration)
+  - [Manage metrics backends](docs/examples.md#manage-metrics-backends)
+  - [Manage tracing backends](docs/examples.md#manage-tracing-backends)
 
 ### Install and use this role
 
 * Install the role using the command-line :
 
   ```shell
-  $ ansible-galaxy role install git+https://github.com/ruskofd/ansible-role-template.git ansible_role_template
+  $ ansible-galaxy role install git+https://github.com/f-bn/traefik-role.git traefik
   ```
 
 * You can also install the role in your projects using a `requirements.yml` file and `ansible-galaxy` command-line :
@@ -47,7 +59,7 @@ You can find some configurations examples :
   ---
   roles:
     - name: ansible_role_template
-      src: https://github.com/ruskofd/ansible-role-template.git
+      src: https://github.com/f-bn/traefik-role.git
       scm: git
       version: '1.0.0'
 
@@ -60,5 +72,5 @@ You can find some configurations examples :
   - name: Deploy
     hosts: <hosts>
     roles:
-      - role: ansible_role_template
+      - role: traefik
   ```
