@@ -1,6 +1,6 @@
 # Managed by Ansible
 
-{% if route.description|length>0 -%}
+{% if route.description is defined -%}
 # {{ route.description }}
 {% endif %}
 {{ route.mode }}:
