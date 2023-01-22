@@ -46,6 +46,7 @@ Ingress route is a concept tied to this Ansible role and inspired by the Ingress
 traefik_ingress_routes:
   - name: myapp-route
     mode: http
+    description: Route to myapp backend
     routers:
       myapp-router:
         rule: "Host(`myapp.example.com`)"
@@ -69,6 +70,7 @@ traefik_ingress_routes:
 traefik_middlewares:
   - name: basicauth-myapp
     mode: http
+    description: Add basic auth for myapp access
     type: basicAuth
     options:
       users:
