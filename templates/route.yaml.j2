@@ -1,6 +1,6 @@
 # Managed by Ansible
 
-{{ route.type }}:
+{{ route.mode }}:
   routers:
     {{ route.routers | to_nice_yaml(indent=2,sort_keys=False) | indent(4,false) }}
   services:
