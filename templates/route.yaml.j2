@@ -1,5 +1,8 @@
 # Managed by Ansible
 
+{% if route.description|length>0 -%}
+# {{ route.description }}
+{% endif %}
 {{ route.mode }}:
   routers:
     {{ route.routers | to_nice_yaml(indent=2,sort_keys=False) | indent(4,false) }}
