@@ -9,6 +9,6 @@
     name: traefik
     group: traefik
     shell: /usr/sbin/nologin
-    comment: "Traefik server user"
+    comment: "Traefik user"
     system: true
     state: present
