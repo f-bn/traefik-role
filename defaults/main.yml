@@ -90,3 +90,9 @@ traefik_ping_enabled: false
 traefik_ping_entrypoint: traefik
 traefik_ping_manualrouting: false
 traefik_ping_terminating_statuscode: '503'
+
+# -----------------------------------------------------------------------------
+# CERTIFICATES RESOLVERS
+# -----------------------------------------------------------------------------
+traefik_cert_resolvers_enabled: false
+traefik_cert_resolvers: {}

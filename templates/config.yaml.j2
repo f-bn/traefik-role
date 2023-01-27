@@ -58,3 +58,9 @@ ping:
   manualRouting: {{ traefik_ping_manualrouting }}
   terminatingStatusCode: {{ traefik_ping_terminating_statuscode }}
 {% endif %}
+
+{% if traefik_cert_resolvers_enabled -%}
+# - Certificates Resolvers -
+certificatesResolvers:
+  {{ traefik_cert_resolvers | to_nice_yaml(indent=2,sort_keys=False) | indent(2,false) }}
+{% endif %}

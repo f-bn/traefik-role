@@ -16,7 +16,7 @@ traefik_entrypoints:
     address: ":443"
     http:
       tls:
-        certResolver: leresolver
+        certResolver: myresolver
   metrics:
     address: ":8083"
 ```
@@ -92,6 +92,7 @@ traefik_metrics_backends:
     addRoutersLabels: true
     addServicesLabels: true
 ```
+
 More informations on metrics backends [documentation](https://doc.traefik.io/traefik/observability/metrics/overview/).
 
 #### Manage tracing backends
@@ -106,3 +107,22 @@ traefik_tracing_backends:
 ```
 
 More informations on tracing backends [documentation](https://doc.traefik.io/traefik/observability/tracing/overview/).
+
+#### Manage certificates resolvers
+
+```YAML
+traefik_cert_resolvers_enabled: true
+traefik_cert_resolvers:
+  myresolver:
+    acme:
+      email: "traefik@mydomain.com"
+      storage: "/etc/traefik/acme.json"
+      caServer: "https://acme-staging-v02.api.letsencrypt.org/directory"
+      keyType: RSA4096
+      httpChallenge:
+        entryPoint: web
+```
+
+More informations on certificates resolvers [documentation](https://doc.traefik.io/traefik/https/acme/).
+
+[Return to main page](../README.md)

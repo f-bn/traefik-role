@@ -96,4 +96,11 @@ Role variables
 | `traefik_ping_manualrouting`      | `false`                      | If set to `true`, disable the default internal router in order to allow one to create a custom router for the `ping@internal` service |
 | `traefik_ping_terminating_statuscode`| `503`                     | During the period in which Traefik is gracefully shutting down, the ping handler returns a 503 status code by default. If Traefik is behind e.g. a load-balancer doing health checks (such as the Kubernetes LivenessProbe), another code might be expected as the signal for graceful termination. In which case, the terminatingStatusCode can be used to set the code returned by the ping handler during termination |
 
+#### Certificates Resolvers
+
+| Name                              | Default                      | Description                                                      |
+| :-------------------------------- | :--------------------------- | :--------------------------------------------------------------- |
+| `traefik_cert_resolvers_enabled`  | `false`                      | If set to `true`, allow Traefik certificates resolvers configuration |
+| `traefik_cert_resolvers`          | `{}`                         | Defines the certificates resolvers configuration (see examples)  |
+
 [Return to main page](../README.md)
