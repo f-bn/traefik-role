@@ -45,6 +45,8 @@ You can find some configurations examples :
   - [Manage middlewares configuration](docs/examples.md#manage-middlewares-configuration)
   - [Manage metrics backends](docs/examples.md#manage-metrics-backends)
   - [Manage tracing backends](docs/examples.md#manage-tracing-backends)
+  - [Manage certificates resolvers](docs/examples.md#manage-certificates-resolvers)
+  - [Enable Traefik dashboard (insecure mode)](docs/examples.md#enable-traefik-dashboard-insecure-mode)
 
 ### Install and use this role
 

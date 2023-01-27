@@ -125,4 +125,14 @@ traefik_cert_resolvers:
 
 More informations on certificates resolvers [documentation](https://doc.traefik.io/traefik/https/acme/).
 
+#### Enable Traefik dashboard (insecure mode)
+
+```YAML
+traefik_api_enabled: true
+traefik_api_insecure: true
+traefik_api_dashboard: true
+```
+
+More informations on API [documentation](https://doc.traefik.io/traefik/operations/api/).
+
 [Return to main page](../README.md)
