@@ -58,10 +58,10 @@ You can find some configurations examples :
   $ cat requirements.yml
   ---
   roles:
-    - name: ansible_role_template
+    - name: traefik
       src: https://github.com/f-bn/traefik-role.git
       scm: git
-      version: '1.0.0'
+      version: 'main'
 
   $ ansible-galaxy install-f -r requirements.yml
   ```
