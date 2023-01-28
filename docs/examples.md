@@ -61,9 +61,9 @@ traefik_ingress_routes:
           servers:
           - url: "http://10.0.10.10:8080/"
           - url: "http://10.0.10.11:8080/"
-        healthCheck:
-          path: '/healthz'
-          port: 8080
+          healthCheck:
+            path: '/healthz'
+            port: 8080
 ```
 
 #### Manage middlewares configuration
