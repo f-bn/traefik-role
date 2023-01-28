@@ -65,7 +65,7 @@ You can find some configurations examples :
     - name: traefik
       src: https://github.com/f-bn/traefik-role.git
       scm: git
-      version: 'main'
+      version: '1.0.0'
 
   $ ansible-galaxy install-f -r requirements.yml
   ```
@@ -74,7 +74,7 @@ You can find some configurations examples :
 
   ```yaml
   - name: Deploy
-    hosts: <hosts>
+    hosts: traefik-proxy
     roles:
       - role: traefik
   ```
