@@ -3,6 +3,28 @@
   hosts: all
   gather_facts: false
   tasks:
-  - name: Example assertion
-    ansible.builtin.assert:
-      that: true
+    - name: Retrieve system services status
+      ansible.builtin.service_facts:
+
+    - name: Check if PostgreSQL service is enabled and running
+      ansible.builtin.assert:
+        that:
+          - services["traefik.service"]["state"] == "running"
+          - services["traefik.service"]["status"] == "enabled"
+
+    - name: Check if HTTP, HTTPS and API ports are open
+      ansible.builtin.wait_for:
+        host: '0.0.0.0'
+        port: "{{ item }}"
+        timeout: 30
+        state: started
+      loop:
+        - 80
+        - 443
+        - 8080
+
+    - name: Check if Prometheus endpoint is listening
+      ansible.builtin.uri:
+        url: "http://127.0.0.1:8083/metrics"
+        method: GET
+        return_content: true

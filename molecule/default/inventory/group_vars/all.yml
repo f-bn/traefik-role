@@ -1,0 +1,59 @@
+---
+# - Entrypoints -
+traefik_entrypoints:
+  web:
+    address: ":80"
+  websecure:
+    address: ":443"
+  metrics:
+    address: ":8083"
+
+# - Providers -
+traefik_providers:
+  file:
+    directory: /etc/traefik/dynamic
+    watch: true
+
+# - Ingress routes -
+traefik_ingress_routes:
+  - name: myapp-route
+    description: Route to myapp backend
+    mode: http
+    routers:
+      myapp-router:
+        rule: "Host(`myapp.example.com`)"
+        service: myapp-service
+        middlewares:
+        - 'basicauth-myapp'
+    services:
+      myapp-service:
+        loadBalancer:
+          servers:
+          - url: "http://127.0.0.1:80/"
+          - url: "http://127.0.0.2:80/"
+        healthCheck:
+          path: '/healthz'
+
+# - Middlewares -
+traefik_middlewares:
+  - name: basicauth-myapp
+    description: Add basic auth for myapp access
+    mode: http
+    type: basicAuth
+    options:
+      users:
+        - 'test:$apr1$H6uskkkW$IgXLP6ewTrSuBkTrqE8wj/'
+
+# - API -
+traefik_api_enabled: true
+traefik_api_insecure: true
+traefik_api_dashboard: true
+
+# - Metrics -
+traefik_metrics_enabled: true
+traefik_metrics_backends:
+  prometheus:
+    entryPoint: metrics
+    addRoutersLabels: true
+    addServicesLabels: true
+
