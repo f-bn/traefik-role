@@ -9,9 +9,9 @@ Role variables
 | `traefik_install_dir`             | `/usr/local/bin`             | Defines the Traefik binary installation directory                |
 | `traefik_config_dir`              | `/etc/traefik`               | Defines the Traefik configuration directory                      |
 | `traefik_config_static_path`      | `{{ traefik_config_dir }}/traefik.yaml`| Defines the absolute path to the static Traefik configuration file |
-| `traefik_config_dynamic_dir`      | `{{ traefik_config_dir }}/dynamic`| Defines the directory where Traefik dyanmic configuration files are stored |
+| `traefik_config_dynamic_dir`      | `{{ traefik_config_dir }}/dynamic`| Defines the directory where Traefik dynamic configuration files are stored |
 | `traefik_binary_archive_url`      | see [defaults](../defaults/main.yml) | Defines the URL where to download the Traefik binary archive |
-| `traefik_binary_archive_checksum` | see [defaults](../defaults/main.yml) | Defines the Traefik binary checksum (sha256)             |
+| `traefik_binary_archive_checksum` | see [defaults](../defaults/main.yml) | Defines the Traefik binary checksum (sha256 checksum)    |
 | `traefik_binary_update`           | `false`                      | If set to `true`, force the Traefik binary update                |
 
 #### Global
@@ -25,26 +25,26 @@ Role variables
 
 | Name                              | Default                      | Description                                                      |
 | :-------------------------------- | :--------------------------- | :--------------------------------------------------------------- |
-| `traefik_entrypoints`             | see [defaults](../defaults/main.yml) | Defines the entrypoints configuration (see examples)     |
+| `traefik_entrypoints`             | see [defaults](../defaults/main.yml) | Defines the entrypoints configuration (see [examples](examples.md#manage-entrypoints-configuration)) |
 
 
 #### Providers
 
 | Name                              | Default                      | Description                                                      |
 | :-------------------------------- | :--------------------------- | :--------------------------------------------------------------- |
-| `traefik_providers`               | see [defaults](../defaults/main.yml) | Defines the Traefik providers configuration (see examples) |
+| `traefik_providers`               | see [defaults](../defaults/main.yml) | Defines the Traefik providers configuration (see [examples](examples.md#manage-providers-configuration)) |
 
 #### Ingress routes
 
 | Name                              | Default                      | Description                                                      |
 | :-------------------------------- | :--------------------------- | :--------------------------------------------------------------- |
-| `traefik_ingress_routes`          | `{}`                         | Defines the ingress routes configuration (see examples)          |
+| `traefik_ingress_routes`          | `{}`                         | Defines the ingress routes configuration (see [examples](examples.md#manage-ingress-routes-configuration)) |
 
 #### Middlewares
 
 | Name                              | Default                      | Description                                                      |
 | :-------------------------------- | :--------------------------- | :--------------------------------------------------------------- |
-| `traefik_middlewares`             | `{}`                         | Defines the Traefik middlewares configuration (see examples)     |
+| `traefik_middlewares`             | `{}`                         | Defines the Traefik middlewares configuration (see [examples](examples.md#manage-middlewares-configuration)) |
 
 #### API
 
@@ -78,14 +78,14 @@ Role variables
 | Name                              | Default                      | Description                                                      |
 | :-------------------------------- | :--------------------------- | :--------------------------------------------------------------- |
 | `traefik_metrics_enabled`         | `false`                      | If set to `true`, enable metrics backends                        |
-| `traefik_metrics_backends`        | `{}`                         | Defines the metrics backends configuration (see examples)        |
+| `traefik_metrics_backends`        | `{}`                         | Defines the metrics backends configuration (see [examples](examples.md#manage-metrics-backends)) |
 
 #### Tracing
 
 | Name                              | Default                      | Description                                                      |
 | :-------------------------------- | :--------------------------- | :--------------------------------------------------------------- |
 | `traefik_tracing_enabled`         | `false`                      | If set to `true`, enable tracing backends                        |
-| `traefik_tracing_backends`        | `{}`                         | Defines the tracing backends configuration (see examples)        |  
+| `traefik_tracing_backends`        | `{}`                         | Defines the tracing backends configuration (see [examples](examples.md#manage-tracing-backends)) |  
 
 #### Ping
 
@@ -101,6 +101,6 @@ Role variables
 | Name                              | Default                      | Description                                                      |
 | :-------------------------------- | :--------------------------- | :--------------------------------------------------------------- |
 | `traefik_cert_resolvers_enabled`  | `false`                      | If set to `true`, allow Traefik certificates resolvers configuration |
-| `traefik_cert_resolvers`          | `{}`                         | Defines the certificates resolvers configuration (see examples)  |
+| `traefik_cert_resolvers`          | `{}`                         | Defines the certificates resolvers configuration (see [examples](examples.md#manage-certificates-resolvers))  |
 
 [Return to main page](../README.md)
