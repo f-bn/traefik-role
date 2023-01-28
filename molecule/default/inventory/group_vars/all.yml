@@ -31,8 +31,9 @@ traefik_ingress_routes:
           servers:
           - url: "http://127.0.0.1:80/"
           - url: "http://127.0.0.2:80/"
-        healthCheck:
-          path: '/healthz'
+          healthCheck:
+            path: '/healthz'
+            port: 80
 
 # - Middlewares -
 traefik_middlewares:
@@ -48,6 +49,9 @@ traefik_middlewares:
 traefik_api_enabled: true
 traefik_api_insecure: true
 traefik_api_dashboard: true
+
+# - Logs -
+traefik_logs_level: INFO
 
 # - Metrics -
 traefik_metrics_enabled: true
