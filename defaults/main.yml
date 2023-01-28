@@ -24,9 +24,9 @@ traefik_global_sendanonymoususage: false
 # ENTRYPOINTS
 # -----------------------------------------------------------------------------
 traefik_entrypoints:
-  http:
+  web:
     address: ":80"
-  https:
+  websecure:
     address: ":443"
 
 # -----------------------------------------------------------------------------
