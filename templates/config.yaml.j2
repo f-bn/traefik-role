@@ -23,7 +23,7 @@ api:
 
 # - Logs -
 log:
-{% if traefik_logs_filepath|length>0 -%}
+{% if traefik_logs_filepath|length>0 %}
   filePath: {{ traefik_logs_filepath }}
 {% endif %}
   format: {{ traefik_logs_format }}
@@ -32,11 +32,11 @@ log:
 {% if traefik_access_logs_enabled -%}
 # - Access logs -
 accessLog:
-{% if traefik_access_logs_filepath|length>0 -%}
+{% if traefik_access_logs_filepath|length>0 %}
   filePath: {{ traefik_access_logs_filepath }}
 {% endif %}
   format: {{ traefik_access_logs_format }}
-{% if traefik_access_logs_buffering_size|length>0 -%}
+{% if traefik_access_logs_buffering_size|length>0 %}
   bufferingSize: {{ traefik_access_logs_buffering_size }}
 {% endif %}
 {% endif %}
